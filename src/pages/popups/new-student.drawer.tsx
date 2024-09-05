@@ -1,9 +1,11 @@
 import {
   Box,
   Button,
+  CloseButton,
   Drawer,
   DrawerContent,
   DrawerOverlay,
+  Flex,
   Stack,
   Text,
 } from '@chakra-ui/react'
@@ -54,7 +56,7 @@ export const NewStudentDrawer = () => {
       <DrawerContent
         paddingBlockStart={[0]}
         height={['100%']}
-        overflowY="auto"
+        overflowY="hidden"
         autoFocus={false}
         position={['relative']}
       >
@@ -62,15 +64,18 @@ export const NewStudentDrawer = () => {
           onSubmit={onSubmit as SubmitHandler<FieldValues>}
           schema={AddStudentSchema}
         >
-          <Box padding={['16px']}>
-            <Text
-              marginBlockEnd={['16px']}
-              fontSize={['20px']}
-              fontWeight={['500']}
-            >
-              Create new student
-            </Text>
-            <Stack height={['100%']} spacing={['16px']}>
+          <Box height={['100%']} padding={['16px']}>
+            <Flex justifyContent={['space-between']}>
+              <Text
+                marginBlockEnd={['16px']}
+                fontSize={['20px']}
+                fontWeight={['500']}
+              >
+                Create new student
+              </Text>
+              <CloseButton onClick={onClose} />
+            </Flex>
+            <Stack height={['100%']} spacing={['8px']}>
               <Input
                 name="student_id"
                 label="Student Id"
@@ -88,11 +93,14 @@ export const NewStudentDrawer = () => {
                 placeholder="Birth date"
               />
               <Button
-                colorScheme="blue"
-                position="absolute"
-                bottom={['16px']}
-                right={['16px']}
-                left={['16px']}
+                colorScheme="green"
+                marginBlockEnd={[
+                  'var(--chakra-header-height-base-positivestring)',
+                  'var(--chakra-header-height-sm-positivestring)',
+                  'var(--chakra-header-height-md-positivestring)',
+                  'var(--chakra-header-height-lg-positivestring)',
+                ]}
+                marginBlockStart={['auto']}
                 isLoading={isPending}
                 isDisabled={isPending}
                 loadingText="Submitting"

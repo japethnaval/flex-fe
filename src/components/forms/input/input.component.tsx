@@ -28,9 +28,10 @@ export const Input = ({
     <InputStyles.Container w={props.w || '100%'}>
       {label && (
         <Text
-          color="gray.200"
+          color="gray.900"
           fontWeight="normal"
           marginBlockEnd={['4px', '4px', '6px']}
+          fontSize={['16px']}
         >
           {label}
         </Text>
@@ -55,7 +56,7 @@ export const Input = ({
       />
 
       {get(errors, name) && (
-        <Text color="red.500">
+        <Text fontSize={['14px']} color="red.500">
           {get(errors, `${name}.message`, '') as string}
         </Text>
       )}

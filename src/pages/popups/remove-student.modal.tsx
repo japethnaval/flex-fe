@@ -14,7 +14,7 @@ import { useCallback } from 'react'
 import { get } from 'react-hook-form'
 import uiStore from 'store/ui.store'
 
-export const DeleteStudentModal = () => {
+export const RemoveStudentModal = () => {
   const { activeModal, selectedStudent, setActiveModal } = uiStore()
   const { mutateAsync, isPending } = useRemoveStudentMutation()
 
@@ -52,7 +52,7 @@ export const DeleteStudentModal = () => {
           <Text paddingBlock={['16px']}>
             {` Are you sure you want to remove student ${selectedStudent?.first_name} ${selectedStudent?.last_name}`}
           </Text>
-          <Flex gap={['16px']}>
+          <Flex gap={['16px']} marginBlockStart={['16px']}>
             <Button
               isDisabled={isPending}
               isLoading={isPending}
@@ -64,9 +64,6 @@ export const DeleteStudentModal = () => {
             </Button>
             <Button
               onClick={onClose}
-              _hover={{
-                background: '#DCDDE0',
-              }}
               flex={1}
               colorScheme="gray"
               isDisabled={isPending}

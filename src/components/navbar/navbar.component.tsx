@@ -1,4 +1,5 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { HamburgerIcon } from '@chakra-ui/icons'
+import { Box, Flex, Hide, IconButton, Show } from '@chakra-ui/react'
 import { memo } from 'react'
 import { NavbarStyles } from './navbar.styles'
 
@@ -33,12 +34,24 @@ export const Navbar = () => (
       paddingBlock={['16px']}
       justifyContent={['flex-end']}
     >
-      <Flex alignItems={['center']} gap={['32px']}>
-        <NavbarStyles.Link href="/dashboard">Dashboard</NavbarStyles.Link>
-        <NavbarStyles.Link href="/">Login</NavbarStyles.Link>
-        <NavbarStyles.LinkText>Scholarships</NavbarStyles.LinkText>
-        <NavbarStyles.LinkText>About us</NavbarStyles.LinkText>
-      </Flex>
+      <Show below="md">
+        <IconButton
+          colorScheme="gray"
+          _focusWithin={{
+            background: 'gray.100',
+          }}
+          icon={<HamburgerIcon />}
+          aria-label="hamburger"
+        />
+      </Show>
+      <Hide below="md">
+        <Flex alignItems={['center']} gap={['32px']}>
+          <NavbarStyles.Link href="/dashboard">Dashboard</NavbarStyles.Link>
+          <NavbarStyles.Link href="/">Login</NavbarStyles.Link>
+          <NavbarStyles.LinkText>Scholarships</NavbarStyles.LinkText>
+          <NavbarStyles.LinkText>About us</NavbarStyles.LinkText>
+        </Flex>
+      </Hide>
     </NavbarStyles.Container>
   </Box>
 )

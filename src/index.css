@@ -19,6 +19,10 @@ body {
     display: none;
   }
 
+  form {
+    height: 100%;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }

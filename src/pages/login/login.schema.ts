@@ -4,19 +4,19 @@ export const LoginDetailsSchema = z.object({
   email: z
     .string()
     .trim()
-    .min(1, 'EMAIL_IS_REQUIRED')
-    .email('EMAIL_IS_INVALID'),
+    .min(1, 'Email is required')
+    .email('Email format is invalid'),
 
   password: z
     .string()
     .trim()
-    .min(1, 'PASSWORD_IS_REQUIRED')
+    .min(1, 'Password is required')
     .refine(
       (value) =>
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g.test(
           value ?? '',
         ),
-      'PASSWORD_INVAILD',
+      'Password format is invalid',
     ),
 })
 export type LoginFormData = z.infer<typeof LoginDetailsSchema>
