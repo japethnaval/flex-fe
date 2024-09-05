@@ -17,6 +17,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['simple-import-sort', 'prefer-arrow', 'import'],
   rules: {
+    'import/prefer-default-export': 'off',
     'simple-import-sort/imports': [
       'error',
       {

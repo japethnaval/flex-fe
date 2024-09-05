@@ -1,33 +1,40 @@
-import './App.css'
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+// eslint-disable-next-line import/no-extraneous-dependencies
+
+import { Dashboard } from 'pages/dashboard/dashboard.page'
+import { Login } from 'pages/login/login.page'
+import { DeleteStudentModal } from 'pages/popups/delete-student.modal'
+import { NewStudentDrawer } from 'pages/popups/new-student.drawer'
+import { Fragment } from 'react/jsx-runtime'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Layout from './pages/layout'
 
 const App = () => {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      // errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <Login />,
+        },
+        {
+          path: '/dashboard',
+          element: <Dashboard />,
+        },
+      ],
+    },
+  ])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          {/* <img src={viteLogo} className="logo" alt="Vite logo" /> */}
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((countx) => countx + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Fragment>
+      {/* MODALS HERE */}
+      <NewStudentDrawer />
+      <DeleteStudentModal />
+      {/* MODALS END */}
+
+      <RouterProvider router={router} />
+    </Fragment>
   )
 }
 
