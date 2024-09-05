@@ -13,7 +13,6 @@ import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form'
-import { useLocation } from 'react-router-dom'
 import { GenericObject } from 'types/globals'
 import { z } from 'zod'
 
@@ -47,13 +46,14 @@ export const HookFormProvider = ({
     resolver: schema ? zodResolver(schema) : undefined,
   })
 
-  const location = useLocation()
-
   useEffect(() => {
-    if (methods.formState.isSubmitSuccessful && location.pathname !== '/') {
+    if (
+      methods.formState.isSubmitSuccessful &&
+      window.location.pathname !== '/'
+    ) {
       methods.reset()
     }
-  }, [location.pathname, methods, methods.formState.isSubmitSuccessful])
+  }, [methods, methods.formState.isSubmitSuccessful])
 
   return (
     <FormProvider {...methods}>

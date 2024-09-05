@@ -2,9 +2,9 @@ import './index.css'
 import { ChakraBaseProvider } from '@chakra-ui/react'
 import { ThemeProvider } from '@emotion/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import App from 'App'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './app'
 import theme from './theme/theme'
 
 const queryClient = new QueryClient()
